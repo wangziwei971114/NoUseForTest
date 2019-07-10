@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<template id="parent-template">
+    <div>
+        <h1>Parent</h1>
+        <child @pp="res"></child>
+    </div>
+</template>
+<template id="child-template">
+    <div>
+        <h2>Child</h2>
+        <button @click="send">发送</button>
+    </div>
+</template>
+<script>
+    new Vue({
+        el: "#app",
+        components: {
+            parent: {
+                template: '#parent-template',
+                methods: {
+                    res(result) {
+                        console.log('父组件收到子组件的信息：' + result);
+                    }
+                },
+                components: {
+                    child: {
+                        template: '#child-template',
+                        methods: {
+                            send() {
+                                this.$emit('pp', '你好，我是你的孩子');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>

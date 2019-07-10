@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-menu></my-menu>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component('my-menu',{
+        template:`
+            <ul>
+                <li>首页</li><li>分类</li><li>个人中心</li>
+            </ul>
+        `
+    })
+    new Vue({
+        el:"#app"
+    })
+</script>
+</html>

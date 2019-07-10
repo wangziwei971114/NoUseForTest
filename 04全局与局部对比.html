@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <g-component></g-component>
+    <div id="app" style="border:1px solid;">
+        <h1>APP</h1>
+        <g-component></g-component>
+        <app-component></app-component>
+    </div>
+    <div id="ppa" style="border:1px solid;">
+        <h1>PPA</h1>
+        <g-component></g-component>
+        <ppa-component></ppa-component>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    Vue.component('g-component',{
+        template:'<a href="#">全局组件</a>'
+    })
+    new Vue({
+        el:"#app",
+        components:{
+            'app-component':{
+                template:'<a href="#">app-局部组件</a>'
+            }
+        }
+    })
+    new Vue({
+        el:"#ppa",
+        components:{
+            'ppa-component':{
+                template:'<a href="#">ppa-局部组件</a>'
+            }
+        }
+    })
+</script>
+</html>

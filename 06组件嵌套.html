@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <parent>
+        </parent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    var child={template:'<b>Child</b>'}
+    new Vue({
+        el:"#app",
+        components:{
+            parent:{
+                template:'<div>Parent .<child></child><child2></child2></div>',
+                components:{
+                    child,child2:{
+                        template:'<a href="#">child2</a>'
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

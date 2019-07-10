@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        components:{
+            'my-component':{
+                template:`
+                    <div>
+                        <input v-model="msg"/>{{result}}  
+                        <button @click="play">弹框</button>  
+                    </div>
+                `,
+                data(){
+                    return {
+                        msg:'Hello Vue.js'
+                    }
+                },
+                computed:{
+                    result(){
+                        return this.msg+'!!!';
+                    }
+                },
+                methods:{
+                    play(){
+                        alert('嘿嘿嘿');
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>

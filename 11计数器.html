@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <parent></parent>
+    </div>
+</body>
+<script src="vue.js"></script>
+<template id="parent-template">
+    <div>
+        <h2>{{total}}</h2>
+        <child @sum="calc"></child>
+        <child @sum="calc"></child>
+        <child @sum="calc"></child>
+    </div>
+</template>
+<template id="child-template">
+    <button @click="add">{{count}}</button>
+</template>
+<script>
+    let child={
+        template:'#child-template',
+        data(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            add(){
+                this.count++;
+                this.$emit('sum');
+            }
+        }
+    }
+    new Vue({
+        el:"#app",
+        components:{
+            parent:{
+                template:'#parent-template',
+                data(){
+                    return {
+                        total:0
+                    }
+                },
+                components:{
+                    child
+                },
+                methods:{
+                    calc(){
+                        this.total++;
+                    }
+                }
+            }
+        }
+    })
+</script>
+</html>
